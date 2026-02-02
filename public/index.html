@@ -69,8 +69,18 @@
     </div>
 </div>
 
-<div id="logout-container" style="display: none;">
-    <button class="logout-footer-btn" onclick="logout()">ВИЙТИ З СИСТЕМИ</button>
+<div id="logout-container">
+    <div id="change-pw-block" style="display: none; margin-bottom: 15px;">
+        <input type="password" id="new-password" placeholder="Новий пароль" style="max-width: 200px; padding: 10px; margin-bottom: 10px;">
+        <button class="logout-footer-btn" onclick="submitNewPassword()" style="width: auto; padding: 10px 20px;">ПІДТВЕРДИТИ</button>
+    </div>
+
+    <div class="footer-actions">
+        <button class="logout-footer-btn" id="show-pw-btn" onclick="document.getElementById('change-pw-block').style.display='flex'">
+            ЗМІНИТИ ПАРОЛЬ
+        </button>
+        <button class="logout-footer-btn" onclick="logout()">ВИЙТИ З СИСТЕМИ</button>
+    </div>
 </div>
 
 <script src="script.js"></script>

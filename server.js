@@ -41,6 +41,22 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.post('/change-password', async (req, res) => {
+    const { userId, newPassword } = req.body;
+
+    try {
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        await pool.query(
+            'UPDATE users SET password_hash = $1 WHERE id = $2',
+            [hashedPassword, userId]
+        );
+        res.json({ success: true, message: 'Пароль успішно змінено' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Помилка сервера' });
+    }
+});
+
 app.listen(process.env.PORT, () => {
     console.log(`Сервер запущено на http://localhost:${process.env.PORT}`);
 });

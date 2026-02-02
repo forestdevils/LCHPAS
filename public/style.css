@@ -12,12 +12,14 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Елементи один під одним */
+    align-items: center;    /* Центрування по горизонталі */
+    justify-content: center; /* Центрування по вертикалі */
     min-height: 100vh;
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
+    gap: 10px; /* Відступ між паспортом і кнопками */
 }
 
 /* --- КОНТЕЙНЕР ЛОГІНУ --- */
@@ -201,34 +203,95 @@ button:hover {
 
 
 
-
-.logout-footer-btn {
+/* Контейнер кнопок під паспортом */
+#logout-container {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: none;
+    width: 100%;
+    max-width: 500px; /* Трохи ширше, щоб влізли дві кнопки в ряд */
+    display: none;    /* Керується через JS (flex) */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Ряд для кнопок "Змінити" та "Вийти" */
+.footer-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Стиль для інпуту нового пароля */
+#new-password {
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+    margin-bottom: 0; /* Прибираємо нижній відступ */
+}
+
+/* Оновлюємо body, щоб елементи йшли зверху вниз */
+body {
+    flex-direction: column; /* Елементи стають один під одним */
+    gap: 20px;
+}
+
+
+/* Блок зміни пароля, який випливає над кнопками */
+#change-pw-block {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+
+/* Уніфікована кнопка */
+.logout-footer-btn {
+    background: rgba(10, 10, 10, 0.8); /* Напівпрозорий фон, бо під кнопкою може бути контент */
+    backdrop-filter: blur(5px);        /* Ефект розмиття фону під кнопкою */
     border: 1px solid #450a0a;
-    color: #555; /* Тьмяний колір, щоб не відволікати */
-    padding: 8px 20px;
-    border-radius: 20px;
+    color: #888;
+    padding: 10px 20px;
+    border-radius: 20px; /* Повертаємо закруглені кути, як у старому коді */
     cursor: pointer;
     font-size: 10px;
-    letter-spacing: 2px;
+    font-weight: bold;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
-    width: auto; /* Щоб кнопка не була на весь екран */
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .logout-footer-btn:hover {
-    color: #b91c1c;
-    border-color: #b91c1c;
-    background: rgba(185, 28, 28, 0.05);
-    box-shadow: 0 0 10px rgba(185, 28, 28, 0.2);
+    color: #f8fafc;
+    border-color: var(--accent-red);
+    background: rgba(185, 28, 28, 0.1);
 }
 
 /* На мобільних пристроях піднімаємо трохи вище, щоб не заважати системним жестам */
 @media (max-width: 480px) {
-    .logout-footer-btn {
+    #logout-container {
         bottom: 10px;
+    }
+    .footer-actions {
+        gap: 10px;
+    }
+    .logout-footer-btn {
+        padding: 8px 12px;
+        font-size: 9px;
     }
 }

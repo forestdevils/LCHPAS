@@ -91,3 +91,28 @@ function toggleExtraInfo() {
     extra.style.display = (extra.style.display === 'block') ? 'none' : 'block';
     btn.innerText = (extra.style.display === 'block') ? 'ПРИХОВАТИ ↑' : 'ПОКАЗАТИ БІЛЬШЕ ↓';
 }
+
+async function submitNewPassword() {
+    const newPassword = document.getElementById('new-password').value;
+    if (!newPassword) return alert("Введіть пароль");
+
+    // Отримуємо ID користувача з localStorage
+    const session = JSON.parse(localStorage.getItem('userSession'));
+    const userId = session.user.id;
+
+    try {
+        const response = await fetch('/change-password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId, newPassword })
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            alert("Пароль змінено!");
+            document.getElementById('change-pw-block').style.display = 'none';
+        }
+    } catch (err) {
+        alert("Помилка зв'язку з сервером");
+    }
+}
