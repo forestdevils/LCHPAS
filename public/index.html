@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система Авторизації</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login-form" class="login-container">
+    <div style="overflow: hidden; margin-top: -20px;">
+        <img src="https://i.ibb.co/Hf7fcHkN/logo.png" alt="logo" class="logo">
+    </div>
+    <h2>АВТОРИЗАЦІЯ</h2>
+    <input type="text" id="username" placeholder="ЛОГІН КОРИСТУВАЧА">
+    <input type="password" id="password" placeholder="ПАРОЛЬ ДОСТУПУ">
+    <button onclick="login()">УВІЙТИ В СИСТЕМУ</button>
+</div>
+
+<div id="passport" class="passport-card">
+    <div class="passport-header">Ідентифікаційна картка особи</div>
+    <div class="passport-body">
+        <div class="photo-space">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="User">
+        </div>
+        <div class="info-section">
+            <div class="info-item">
+                <span class="label">Номер посвідчення</span>
+                <span class="value" id="p-id">№ 000</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Нікнейм</span>
+                <a id="p-link" href="#" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="value" id="p-nick">Username</span>
+                </a>
+            </div>
+            <div class="info-item">
+                <span class="label">Партійне військове звання</span>
+                <span class="value" id="p-rank">Рядовий</span>
+            </div>
+            <button class="more-info-btn" id="toggle-btn" onclick="toggleExtraInfo()">ПОКАЗАТИ БІЛЬШЕ ↓</button>
+        </div>
+    </div>
+
+    <div id="extra-info" class="extra-info">
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">Телеграм</span>
+                <span class="value" id="p-tg">-</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Батальйон</span>
+                <span class="value" id="p-battalion">-</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Дод. посади</span>
+                <span class="value" id="p-positions">-</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Основна З/П</span>
+                <span class="value" id="p-salary">0</span>
+            </div>
+            <div class="info-item" style="grid-column: span 2;">
+                <span class="label">Дод. З/П та примітки</span>
+                <span class="value" id="p-add-salary">0</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="logout-container" style="display: none;">
+    <button class="logout-footer-btn" onclick="logout()">ВИЙТИ З СИСТЕМИ</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+:root {
+    --primary-color: #800000;
+    --accent-red: #b91c1c;
+    --bg-color: #0a0a0a;
+    --card-bg: #1a0f0f;
+    --text-color: #f8fafc;
+    --input-bg: #2d1b1b;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- КОНТЕЙНЕР ЛОГІНУ --- */
+.login-container {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(128, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    border: 1px solid #450a0a;
+}
+
+.logo {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-bottom: -10px;
+    filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.4));
+}
+
+h2 {
+    margin: 0 0 25px 0;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px black;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #450a0a;
+    background: var(--input-bg);
+    color: white;
+    box-sizing: border-box;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+button:hover {
+    background: var(--accent-red);
+    box-shadow: 0 0 15px var(--accent-red);
+}
+
+/* --- ПАСПОРТ --- */
+.passport-card {
+    display: none;
+    width: 100%;
+    max-width: 450px;
+    background: linear-gradient(135deg, #2d0a0a 0%, #1a0505 100%);
+    border: 2px solid #5c0000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    position: relative;
+    z-index: 1;
+}
+
+.passport-header {
+    background: #4a0000;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    border-bottom: 1px solid #800000;
+}
+
+.passport-body {
+    display: flex;
+    padding: 20px;
+}
+
+.photo-space {
+    width: 160px;
+    height: 200px;
+    background: #000000; /* Чорний фон замість синього */
+    border: 1px solid #5c0000; /* Бордова рамка навколо фото */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+    flex-shrink: 0;
+}
+
+.photo-space img {
+    width: 80%;
+    opacity: 0.5;
+}
+
+.info-section {
+    flex-grow: 1;
+}
+
+.info-item {
+    margin-bottom: 12px;
+}
+
+.label {
+    display: block;
+    font-size: 10px;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f8fafc;
+}
+
+/* --- ДОДАТКОВА ІНФОРМАЦІЯ --- */
+.more-info-btn {
+    background: none;
+    border: 1px solid #800000;
+    color: #ff4d4d;
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 11px;
+    border-radius: 4px;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.more-info-btn:hover {
+    background: #800000;
+    color: white;
+}
+
+.extra-info {
+    display: none;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid #5c0000;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* --- АДАПТИВНІСТЬ --- */
+@media (max-width: 480px) {
+    .passport-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .photo-space {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+
+.logout-footer-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: 1px solid #450a0a;
+    color: #555; /* Тьмяний колір, щоб не відволікати */
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    width: auto; /* Щоб кнопка не була на весь екран */
+}
+
+.logout-footer-btn:hover {
+    color: #b91c1c;
+    border-color: #b91c1c;
+    background: rgba(185, 28, 28, 0.05);
+    box-shadow: 0 0 10px rgba(185, 28, 28, 0.2);
+}
+
+/* На мобільних пристроях піднімаємо трохи вище, щоб не заважати системним жестам */
+@media (max-width: 480px) {
+    .logout-footer-btn {
+        bottom: 10px;
+    }
+}
