@@ -10,6 +10,8 @@ function displayPassport(user) {
     document.getElementById('p-rank').innerText = user.party_rank || 'Рядовий';
     document.getElementById('p-link').href = user.profile_url;
 
+    document.title = `ID-картка ${user.username}`;
+
     const userPhoto = document.querySelector('.photo-space img');
     if (user.avatar_url) {
         userPhoto.src = user.avatar_url;
@@ -42,8 +44,11 @@ window.onload = function() {
         if (now - session.timestamp < sevenDays) {
             displayPassport(session.user);
         } else {
+            document.title = "Авторизація";
             localStorage.removeItem('userSession');
         }
+    } else {
+        document.title = "Авторизація"; // Для нових відвідувачів
     }
 };
 
@@ -81,6 +86,7 @@ async function login() {
 
 function logout() {
     localStorage.removeItem('userSession');
+    document.title = "Авторизація";
     document.getElementById('logout-container').style.display = 'none';
     location.reload(); // Перезавантажуємо сторінку, щоб повернутись до логіну
 }
